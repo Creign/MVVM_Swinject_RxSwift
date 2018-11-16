@@ -46,14 +46,26 @@ extension API: TargetType {
     }
     
     var task: Task {
+        if let requestParameters = parameters {
+            return .requestParameters(parameters: requestParameters, encoding: parameterEncoding)
+        }
+        
+        return .requestPlain
+    }
+    
+    var parameterEncoding: Moya.ParameterEncoding {
         switch self {
-        case .getUsers:
-            return .requestPlain
+        default:
+            // default
+            return URLEncoding.default
         }
     }
     
     var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
+        return [
+            "Accept" : "application/json",
+            "Content-Type" : "application/json"
+        ]
     }
 }
 

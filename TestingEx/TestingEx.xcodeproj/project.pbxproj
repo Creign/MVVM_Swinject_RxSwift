@@ -23,6 +23,8 @@
 		C24249BA219D498200BD790A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24249B9219D498200BD790A /* API.swift */; };
 		C24249BD219D4A1100BD790A /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24249BC219D4A1100BD790A /* UserServices.swift */; };
 		C24249BF219D55AA00BD790A /* MoyaResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24249BE219D55AA00BD790A /* MoyaResponse+Extensions.swift */; };
+		C24249C2219EA8DD00BD790A /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24249C1219EA8DD00BD790A /* UsersTableViewCell.xib */; };
+		C24249C4219EAA6F00BD790A /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24249C3219EAA6F00BD790A /* UsersTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		C24249B9219D498200BD790A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C24249BC219D4A1100BD790A /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		C24249BE219D55AA00BD790A /* MoyaResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaResponse+Extensions.swift"; sourceTree = "<group>"; };
+		C24249C1219EA8DD00BD790A /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
+		C24249C3219EAA6F00BD790A /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		C3277EC8805000D207939A46 /* Pods-TestingEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingEx.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestingEx/Pods-TestingEx.release.xcconfig"; sourceTree = "<group>"; };
 		CCA5624A4173EB25CCB85E5D /* Pods-TestingExUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingExUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestingExUITests/Pods-TestingExUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D29AA302844DEC4EA9AC45E9 /* Pods-TestingExTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingExTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestingExTests/Pods-TestingExTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				C24249AC219D34D700BD790A /* Service */,
 				C24249A6219D320B00BD790A /* Model */,
 				C24249A9219D347000BD790A /* Controller */,
+				C24249C0219EA8BC00BD790A /* Custom Cell */,
 				C24249AB219D349400BD790A /* View */,
 				C24249B6219D3F2000BD790A /* Extensions */,
 				C242497D219CEF2C00BD790A /* Assets.xcassets */,
@@ -231,6 +236,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C24249C0219EA8BC00BD790A /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C24249C1219EA8DD00BD790A /* UsersTableViewCell.xib */,
+				C24249C3219EAA6F00BD790A /* UsersTableViewCell.swift */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -242,7 +256,7 @@
 				C242496F219CEF2B00BD790A /* Sources */,
 				C2424970219CEF2B00BD790A /* Frameworks */,
 				C2424971219CEF2B00BD790A /* Resources */,
-				F618C07CDF16FEA4F15F8D6B /* [CP] Embed Pods Frameworks */,
+				14D8841B5AA609DE77A4B878 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -339,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C24249C2219EA8DD00BD790A /* UsersTableViewCell.xib in Resources */,
 				C2424981219CEF2C00BD790A /* LaunchScreen.storyboard in Resources */,
 				C242497E219CEF2C00BD790A /* Assets.xcassets in Resources */,
 				C242497C219CEF2B00BD790A /* Main.storyboard in Resources */,
@@ -382,6 +397,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		14D8841B5AA609DE77A4B878 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TestingEx/Pods-TestingEx-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestingEx/Pods-TestingEx-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8FDD6814AA8F0D0D1B7DB4DC /* [CP] Check Pods Manifest.lock */ = {
@@ -428,46 +481,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F618C07CDF16FEA4F15F8D6B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestingEx/Pods-TestingEx-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestingEx/Pods-TestingEx-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -482,6 +495,7 @@
 				C24249A8219D321700BD790A /* Users.swift in Sources */,
 				C24249B8219D3F4400BD790A /* UIViewController+Extensions.swift in Sources */,
 				C2424977219CEF2B00BD790A /* AppDelegate.swift in Sources */,
+				C24249C4219EAA6F00BD790A /* UsersTableViewCell.swift in Sources */,
 				C24249BA219D498200BD790A /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

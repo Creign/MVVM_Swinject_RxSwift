@@ -9,29 +9,30 @@
 import RxSwift
 import ObjectMapper
 
-class UserServices {
+class UsersServices {
+    
     static let disposeBag = DisposeBag()
-    static func getUsers(callback: @escaping (Bool, [Users]?, String?) -> Void) {
+    
+    static func getUsers(callback:@escaping (Bool, [Users]?, String?) -> Void) {
         apiProvider.rx
-            .request(.getUsers())
+            .request(API.getUsers())
             .subscribe { event in
                 switch event {
-                case .success(let response):
+                case let .success(response):
                     if response.success {
-//                        print(response.json)
+                        print(response.json)
                         let data = Mapper<Users>().mapArray(JSONObject: response.json)
                         print(data)
                         callback(true, data, nil)
-                    } else {
+                    }
+                    else {
                         callback(false, nil, "Error")
                     }
-                case .error(let err):
-                    print(err.localizedDescription)
-                    callback(false, nil, err.localizedDescription)
+                case let .error(error):
+                    print(error.localizedDescription)
+                    callback(false, nil, "Something went wrong!")
                 }
             }
             .disposed(by: disposeBag)
     }
 }
-
-

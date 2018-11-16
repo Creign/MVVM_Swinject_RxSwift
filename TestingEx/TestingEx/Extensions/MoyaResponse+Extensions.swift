@@ -7,15 +7,22 @@
 //
 
 import Moya
+import SwiftyJSON
 
 extension Response {
-    var json: Any? {
+    var json: [[String: Any]]? {
         do {
-            let json = try JSONSerialization.jsonObject(with: self.data, options: [])
+//            let data = try JSONSerialization.jsonObject(with: self.data, options: [])
+            let data = JSON(self.data)
+            let obj = data["data"].arrayObject as Any
+            let json = obj as! [[String: Any]]
+
             return json
-        } catch let error as NSError {
+        }
+        catch let error as NSError {
             print(error.localizedDescription)
         }
+        
         return nil
     }
     
@@ -27,3 +34,4 @@ extension Response {
         return self.statusCode == 401
     }
 }
+

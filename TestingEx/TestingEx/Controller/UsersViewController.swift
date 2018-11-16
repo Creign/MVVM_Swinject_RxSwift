@@ -8,9 +8,9 @@
 
 import UIKit
 
-//protocol UsersDelegate {
-//    func getUsers()
-//}
+protocol UsersDelegate {
+    func reloadList(data: [Users])
+}
 
 class UsersViewController: UIViewController {
     
@@ -20,7 +20,20 @@ class UsersViewController: UIViewController {
     var users = [Users]()
     
     override func viewDidLoad() {
+        presenter.attachView(view: self)
+        
+        setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         presenter.getUsers()
+    }
+    
+    func setupView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(UINib(nibName: UsersTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UsersTableViewCell.identifier)
     }
 }
 
@@ -36,14 +49,17 @@ extension UsersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "usersCell", for: indexPath)
+        
+        cell.textLabel?.text = users[indexPath.row].firstName
         
         return cell
     }
 }
 
-//extension UsersViewController: UsersDelegate {
-//    func getUsers() {
-//
-//    }
-//}
+extension UsersViewController: UsersDelegate {
+    func reloadList(data: [Users]) {
+        users = data
+        tableView.reloadData()
+    }
+}

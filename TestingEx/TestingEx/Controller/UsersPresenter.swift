@@ -10,15 +10,19 @@ import UIKit
 
 class UsersPresenter {
     var view: UsersViewController?
+    
     func attachView(view: UsersViewController) {
         self.view = view
     }
     
     func getUsers() {
         view?.showProgress()
-        UserServices.getUsers(callback: { success, data, error in
+        UsersServices.getUsers(callback: { success, data, error in
             self.view?.hideProgress()
-            print(data)
+            
+            if let users = data, !users.isEmpty {
+                self.view?.reloadList(data: users)
+            }
         })
     }
 }
