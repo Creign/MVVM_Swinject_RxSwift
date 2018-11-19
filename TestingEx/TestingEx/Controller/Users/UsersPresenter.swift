@@ -21,8 +21,22 @@ class UsersPresenter {
             self.view?.hideProgress()
             
             if let users = data, !users.isEmpty {
-                self.view?.reloadList(data: users)
+                self.reloadList(data: users)
             }
         })
     }
 }
+
+extension UsersPresenter: UserInteractor {
+    func reloadList(data: [Users]) {
+        view!.users = data
+        view!.tableView.reloadData()
+    }
+    
+    func showUser(user: Users) {
+        let vc = view?.storyboard?.instantiateViewController(withIdentifier: "UsersDetailsViewController") as! UsersDetailsViewController
+        vc.user = user
+        view?.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+

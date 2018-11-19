@@ -20,9 +20,7 @@ class UsersServices {
                 switch event {
                 case let .success(response):
                     if response.success {
-                        print(response.json)
                         let data = Mapper<Users>().mapArray(JSONObject: response.json)
-                        print(data)
                         callback(true, data, nil)
                     }
                     else {

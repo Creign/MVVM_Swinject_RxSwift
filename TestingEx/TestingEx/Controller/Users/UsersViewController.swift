@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol UsersDelegate {
+protocol UserInteractor {
     func reloadList(data: [Users])
+    func showUser(user: Users)
 }
 
 class UsersViewController: UIViewController {
@@ -30,16 +31,21 @@ class UsersViewController: UIViewController {
     }
     
     func setupView() {
+        
+        tableView.rowHeight = UsersTableViewCell.rowHeight
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UINib(nibName: UsersTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UsersTableViewCell.identifier)
+        tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        
+        tableView.register(UINib(nibName: UsersTableViewCell.getCellIdentifier(), bundle: nil), forCellReuseIdentifier: UsersTableViewCell.getCellIdentifier())
     }
 }
 
 extension UsersViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showUser(user: users[indexPath.row])
     }
 }
 
@@ -47,19 +53,21 @@ extension UsersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "usersCell", for: indexPath)
-        
-        cell.textLabel?.text = users[indexPath.row].firstName
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: UsersTableViewCell.getCellIdentifier(), for: indexPath) as? UsersTableViewCell {
+
+            cell.setupCell(user: users[indexPath.row])
+            return cell
+        }
+
+        return UITableViewCell()
     }
 }
 
-extension UsersViewController: UsersDelegate {
-    func reloadList(data: [Users]) {
-        users = data
-        tableView.reloadData()
-    }
-}
+//extension UsersViewController: UsersDelegate {
+//    func reloadList(data: [Users]) {
+//        users = data
+//        tableView.reloadData()
+//    }
+//}

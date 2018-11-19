@@ -7,29 +7,40 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UsersTableViewCell: UITableViewCell {
 
+    static let rowHeight: CGFloat = 60
+    
+    static func getCellIdentifier() -> String {
+        return String(describing: self)
+    }
+    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var lblName: UILabel!
-    
-    static let identifier = "UsersTableViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imgView.layer.cornerRadius = imageView!.bounds.width / 2
+        self.backgroundColor = UIColor.clear
+        contentView.backgroundColor = UIColor.clear
         
     }
     
     func setupCell(user: Users) {
+        if let strURL = user.avatar {
+            let resource = ImageResource(downloadURL: URL(string: strURL)!, cacheKey: strURL)
+            self.imgView.kf.setImage(with: resource)
+        }
+        
         self.lblName.text = "\(user.firstName ?? "...") \(user.lastName ?? "...")"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+       
     }
 
 }

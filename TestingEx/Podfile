@@ -14,6 +14,8 @@ target 'TestingEx' do
     pod 'RxCocoa', '~> 4.0'
     # progress hud
     pod 'SVProgressHUD'
+    # image rendering and caching
+    pod 'Kingfisher'
 
   target 'TestingExTests' do
     inherit! :search_paths
