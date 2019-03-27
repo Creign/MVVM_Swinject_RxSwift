@@ -6,9 +6,11 @@ target 'TestingEx' do
   use_frameworks!
 
     # Pods for API service using Moya
-    pod 'Moya/RxSwift', '~> 11.0'
-    pod 'ObjectMapper', '~> 3.3'
-    pod 'SwiftyJSON'
+    pod 'Moya'
+    pod 'Moya/RxSwift'
+    pod 'Moya-ObjectMapper'
+    pod 'Moya-ObjectMapper/RxSwift'
+    pod 'ObjectMapperAdditions/Core'
     # rx
     pod 'RxSwift', '~> 4.0'
     pod 'RxCocoa', '~> 4.0'
@@ -16,6 +18,14 @@ target 'TestingEx' do
     pod 'SVProgressHUD'
     # image rendering and caching
     pod 'Kingfisher'
+    # Swinject
+    pod 'Swinject', '2.5.0'
+    pod 'SwinjectAutoregistration', '2.5.0'
+    pod 'SwinjectStoryboard', :git => 'https://github.com/Swinject/SwinjectStoryboard.git', :tag => '2.1.0'
+    # List
+    pod 'IGListKit'
+    # JSON
+    pod 'SwiftyJSON'
 
   target 'TestingExTests' do
     inherit! :search_paths

@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import SwinjectStoryboard
+import Swinject
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let container: Assembler = Assembler()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Container.loggingFunction = nil
+        container.apply(assemblies: [NetworkAssembly(), ViewModelAssembly(), UseCaseAssembly(), AppAssembly()])
+        
+        let storyboard = SwinjectStoryboard.create(name: "Users", bundle: nil, container: container.resolver)
+        let rootViewController = storyboard.instantiateInitialViewController()
+        window!.rootViewController = rootViewController
+        
         return true
     }
 
